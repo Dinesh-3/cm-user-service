@@ -2,12 +2,9 @@
 spring:
   application:
     name: USER-SERVICE
+
 server:
   port: 5001
-
-spring:
-  application:
-    name: USER-SERVICE
 
 eureka:
   client:
