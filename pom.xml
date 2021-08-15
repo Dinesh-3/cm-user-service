@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.dinesh</groupId>
 	<artifactId>UserService</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>UserService</name>
 	<description>Spring Boot User Service</description>
 	<properties>
