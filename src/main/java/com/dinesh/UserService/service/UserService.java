@@ -1,5 +1,6 @@
 package com.dinesh.UserService.service;
 
+import com.dinesh.UserService.dto.Department;
 import com.dinesh.UserService.entity.User;
 import com.dinesh.UserService.repository.UserRepository;
 import com.dinesh.UserService.util.ResponseBody;
@@ -7,13 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
 public class UserService {
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     public ResponseEntity<ResponseBody> getAll() {
         Iterable<User> users = repository.findAll();
@@ -23,7 +30,13 @@ public class UserService {
 
     public ResponseEntity<ResponseBody> getById(long id) {
         Optional<User> user = repository.findById(id);
-        ResponseBody responseBody = new ResponseBody(user);
+        ResponseBody response = restTemplate.getForObject("http://department-service/departments/"+user.get().getDepartment_id(), ResponseBody.class);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("user", user);
+        result.put("department", response.getData());
+
+        ResponseBody responseBody = new ResponseBody(result);
         return new ResponseEntity<>(responseBody, HttpStatus.OK);
     }
 
