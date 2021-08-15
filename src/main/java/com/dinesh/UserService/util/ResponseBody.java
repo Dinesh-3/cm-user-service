@@ -5,6 +5,9 @@ public class ResponseBody {
     private String message = "Success";
     private Object data;
 
+    public ResponseBody() {
+    }
+
     public ResponseBody(Object data) {
         this.data = data;
     }
