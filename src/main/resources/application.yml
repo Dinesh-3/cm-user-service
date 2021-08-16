@@ -8,7 +8,7 @@ spring:
     config:
       enabled: true
       name: application
-      profile: dev
+      profile: prod
       label: master
 
 server:
