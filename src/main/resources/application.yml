@@ -12,4 +12,4 @@ spring:
       label: master
 
 server:
-  port: 5001
+  port: ${PORT:5001}
