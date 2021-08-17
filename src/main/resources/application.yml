@@ -7,7 +7,7 @@ spring:
   cloud:
     config:
       enabled: true
-      name: application
+      name: user
       profile: prod
       label: master
 
