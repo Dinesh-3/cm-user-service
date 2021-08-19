@@ -10,15 +10,6 @@ spring:
       name: user
       profile: dev
       label: master
-  jpa:
-    database: POSTGRESQL
-    generate-ddl: true
-    hibernate:
-      ddl-auto: update
-  datasource:
-    platform: postgres
-    url: jdbc:postgresql://localhost:5432/college_management
-    username: postgres
-    password: postgres
+
 server:
   port: ${PORT:5001}

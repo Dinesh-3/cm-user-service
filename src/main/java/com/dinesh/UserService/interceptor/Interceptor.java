@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 
 @Component
 public class Interceptor implements HandlerInterceptor {
@@ -28,7 +29,8 @@ public class Interceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        if(request.getMethod().equals("POST"))
+//        System.out.println("request = " + request.getRequestURI() + " " + request.getRequestURI().split("/")[1]);
+        if(request.getMethod().equals("POST") && request.getRequestURI().split("/")[1].equals("users"))
             service.insertLog(new Log(request.getRequestURI(), response.getStatus()));
         HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
