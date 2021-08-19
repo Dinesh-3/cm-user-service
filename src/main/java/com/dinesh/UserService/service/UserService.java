@@ -1,7 +1,9 @@
 package com.dinesh.UserService.service;
 
 import com.dinesh.UserService.dto.Department;
+import com.dinesh.UserService.entity.Log;
 import com.dinesh.UserService.entity.User;
+import com.dinesh.UserService.repository.LogRepository;
 import com.dinesh.UserService.repository.UserRepository;
 import com.dinesh.UserService.util.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private LogRepository logRepository;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -50,5 +55,14 @@ public class UserService {
         repository.deleteById(id);
         ResponseBody responseBody = new ResponseBody(null);
         return new ResponseEntity<>(responseBody, HttpStatus.OK);
+    }
+
+    public ResponseEntity<ResponseBody> getLogs() {
+        Iterable<Log> logs = logRepository.findAll();
+        return new ResponseEntity<>(new ResponseBody(logs), HttpStatus.OK);
+    }
+
+    public void insertLog(Log log) {
+        logRepository.save(log);
     }
 }

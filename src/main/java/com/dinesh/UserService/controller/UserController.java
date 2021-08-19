@@ -40,4 +40,9 @@ public class UserController {
         return service.delete(id);
     }
 
+    @GetMapping("/logs")
+    ResponseEntity<ResponseBody> getLogs() {
+        return service.getLogs();
+    }
+
 }
