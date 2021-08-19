@@ -28,9 +28,8 @@ public class Interceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-//        System.out.println("request.getParameter(\"department_id\") = " + request.getParameter("department_id"));
-//        if(request.getMethod().equals("POST"))
-//            service.insertLog(new Log(request., 1, request.getRequestURI(), response.getStatus()));
+        if(request.getMethod().equals("POST"))
+            service.insertLog(new Log(request.getRequestURI(), response.getStatus()));
         HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
 }
