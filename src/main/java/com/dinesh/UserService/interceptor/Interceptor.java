@@ -30,7 +30,7 @@ public class Interceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 //        System.out.println("request = " + request.getRequestURI() + " " + request.getRequestURI().split("/")[1]);
-        if(request.getMethod().equals("POST") && request.getRequestURI().split("/")[1].equals("users"))
+        if(request.getMethod().equals("POST"))
             service.insertLog(new Log(request.getRequestURI(), response.getStatus()));
         HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
