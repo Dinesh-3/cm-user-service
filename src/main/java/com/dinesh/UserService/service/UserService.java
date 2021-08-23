@@ -52,7 +52,6 @@ public class UserService {
 
     public ResponseEntity<ResponseBody> create(User user) {
         User savedUser = repository.save(user);
-        userLogRepository.save(new UserLog(200, savedUser.getId(), savedUser.getDepartment_id()));
         ResponseBody responseBody = new ResponseBody(savedUser);
         return new ResponseEntity<>(responseBody, HttpStatus.OK);
     }
