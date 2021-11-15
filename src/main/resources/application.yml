@@ -3,7 +3,7 @@ spring:
   application:
     name: USER-SERVICE
   config:
-    import: configserver:https://api-cloud-config.herokuapp.com
+    import: configserver:http://localhost:5005
   cloud:
     config:
       enabled: true

@@ -1,11 +1,19 @@
 package com.dinesh.UserService.entity;
 
+import lombok.*;
+import org.hibernate.Hibernate;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.Objects;
 
 @Entity
 @Table(name = "user")
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 public class User extends Audit{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,53 +29,4 @@ public class User extends Audit{
     @NotNull
     private long department_id;
 
-    public User() {
-    }
-
-    public User(String first_name, String last_name, String email, long department_id) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.email = email;
-        this.department_id = department_id;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFirst_name() {
-        return first_name;
-    }
-
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public long getDepartment_id() {
-        return department_id;
-    }
-
-    public void setDepartment_id(long department_id) {
-        this.department_id = department_id;
-    }
 }

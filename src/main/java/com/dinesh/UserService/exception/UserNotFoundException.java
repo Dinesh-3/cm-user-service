@@ -1,12 +1,14 @@
 package com.dinesh.UserService.exception;
 
-public class UserNotFoundException extends RuntimeException{
+import org.springframework.http.HttpStatus;
 
+public class UserNotFoundException extends ClientErrorException{
+    private static final HttpStatus STATUS = HttpStatus.NOT_FOUND;
     public UserNotFoundException() {
-        super("Student Not Found");
+        super(STATUS,"Student Not Found");
     }
 
     public UserNotFoundException(String message) {
-        super(message);
+        super(STATUS, message);
     }
 }
